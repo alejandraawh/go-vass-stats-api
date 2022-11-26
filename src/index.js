@@ -2,13 +2,14 @@ const express = require("express");
 const mongoose=require("mongoose");
 const statsRoutes = require("./routes/stats");
 require("dotenv").config();
-
+var cors=require("cors");
 const app = express();
 const port= process.env.PORT || 9000;
 
 //middleware
 app.use(express.json());
 app.use('/govass/stats',statsRoutes)
+app.use(cors());
 //routes
 app.get('/',(req,res)=>{
     res.send('API');
